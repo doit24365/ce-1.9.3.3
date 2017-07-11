@@ -18,6 +18,10 @@ class Test_FinalDate_Helper_Data extends Mage_Core_Helper_Abstract
      */
     public function getHumanReadableDate($date)
     {
+        if (!$date) {
+            return '';
+        }
+
         $format = Mage::app()->getLocale()->getDateFormat(
             Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM
         );

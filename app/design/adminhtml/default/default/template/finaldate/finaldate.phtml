@@ -7,9 +7,11 @@
  */
 ?>
 
+<?php if ($this->getFinalDate()): ?>
 <form>
     <div>
         <b><?php echo $this->__('Final Date: '); ?></b>
         <?php echo $this->getFinalDate(); ?>
     </div>
 </form>
+<?endif; ?>

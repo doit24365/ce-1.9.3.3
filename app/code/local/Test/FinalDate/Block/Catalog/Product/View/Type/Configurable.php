@@ -13,7 +13,7 @@ class Test_FinalDate_Block_Catalog_Product_View_Type_Configurable
 {
     /**
      * Returns additional values for js config
-     * Retrieve final_date attribute for each product
+     * Retrieve final_date attribute value for each product
      *
      * @return array
      */

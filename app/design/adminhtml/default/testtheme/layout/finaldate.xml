@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_sales_order_view>
+        <reference name="order_tab_info">
+            <block type="test_finaldate/checkout_finaldate"
+                   name="sales.order.edit.finaldate"
+                   template="finaldate/finaldate.phtml"/>
+        </reference>
+    </adminhtml_sales_order_view>
+</layout>

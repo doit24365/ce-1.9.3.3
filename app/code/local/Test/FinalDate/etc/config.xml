@@ -73,7 +73,9 @@
                 </final_date>
             </sales_convert_order_item>
             <sales_convert_quote>
-                <final_date><to_order>*</to_order></final_date>
+                <final_date>
+                    <to_order>*</to_order>
+                </final_date>
             </sales_convert_quote>
         </fieldsets>
     </global>
@@ -86,4 +88,27 @@
             </updates>
         </layout>
     </frontend>
+    <adminhtml>
+        <layout>
+            <updates>
+                <finaldate>
+                    <file>finaldate.xml</file>
+                </finaldate>
+            </updates>
+        </layout>
+    </adminhtml>
+    <stores>
+        <admin>
+            <design>
+                <package>
+                    <name>default</name>
+                </package>
+                <theme>
+                    <template>testtheme</template>
+                    <skin>testtheme</skin>
+                    <layout>testtheme</layout>
+                </theme>
+            </design>
+        </admin>
+    </stores>
 </config>

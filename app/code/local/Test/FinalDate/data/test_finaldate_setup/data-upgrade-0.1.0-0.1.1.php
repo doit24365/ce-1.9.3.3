@@ -15,9 +15,7 @@ $installer->startSetup();
 
 $entities = array(
     'quote',
-    'quote_address',
     'quote_item',
-    'quote_address_item',
     'order',
     'order_item'
 );
