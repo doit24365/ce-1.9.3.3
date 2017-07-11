@@ -9,12 +9,14 @@
 
 Product.Config.prototype.getIdOfSelectedProduct = function(val) {
     var existingProducts = new Object();
+
+    // For each super attribute retrieve the products
     for (var i = this.settings.length-1; i >= 0; i--) {
         var selected = this.settings[i].options[this.settings[i].selectedIndex];
         if (selected.config) {
             for (var iproducts = 0; iproducts < selected.config.products.length; iproducts++) {
                 var usedAsKey = selected.config.products[iproducts] + "";
-                if (existingProducts[usedAsKey] == undefined) {
+                if (existingProducts[usedAsKey] === 'undefined') {
                     existingProducts[usedAsKey] = 1;
                 } else {
                     existingProducts[usedAsKey] = existingProducts[usedAsKey] + 1;
@@ -31,11 +33,15 @@ Product.Config.prototype.getIdOfSelectedProduct = function(val) {
     }
     var sizeOfExistingProducts = 0;
     var currentSimpleProductId = "";
+
+    // Calculate the number of products
     for (var keyValue in existingProducts) {
         currentSimpleProductId = keyValue;
         sizeOfExistingProducts = sizeOfExistingProducts + 1
     }
-    if (sizeOfExistingProducts == 1) {
+
+    // Retrieve simple product id if exist only one product
+    if (sizeOfExistingProducts === 1) {
         return currentSimpleProductId;
     }
 
@@ -43,7 +49,11 @@ Product.Config.prototype.getIdOfSelectedProduct = function(val) {
 
 jQuery(document).ready(function(){
     jQuery('.swatch-link').on('click', function() {
+
+        // Get selected product id
         var simpleProductId = spConfig.getIdOfSelectedProduct();
+
+        // Change final date value for selected product
         if (typeof(spConfig.config.finalDate[simpleProductId]) !== 'undefined') {
             jQuery('#product-attribute-specs-table .label:contains("Final date")')
                 .next()
