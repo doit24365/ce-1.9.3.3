@@ -6,7 +6,8 @@
  * @package   Test_FinalDate
  * @author    Roman <do.it.24.365@gmail.com>
  * @copyright 2017 Roman
- */ 
+ */
+
 class Test_FinalDate_Block_Catalog_Product_View_Type_Configurable
     extends Mage_Catalog_Block_Product_View_Type_Configurable
 {
@@ -19,9 +20,6 @@ class Test_FinalDate_Block_Catalog_Product_View_Type_Configurable
     protected function _getAdditionalConfig()
     {
         $additionalData = ['finalDate' => []];
-        $format = Mage::app()->getLocale()->getDateFormat(
-            Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM
-        );
 
         $products = $this->getProduct()
             ->getTypeInstance()
@@ -32,13 +30,8 @@ class Test_FinalDate_Block_Catalog_Product_View_Type_Configurable
         foreach ($products as $product) {
             if ($product->getFinalDate()) {
                 $additionalData['finalDate'][$product->getId()]
-                    = Mage::getSingleton('core/locale')->date(
-                        $product->getFinalDate(),
-                        Zend_Date::ISO_8601,
-                        null,
-                        false
-                    )
-                    ->toString($format);
+                    = Mage::helper('test_finaldate')
+                    ->getHumanReadableDate($product->getFinalDate());
             }
         }
 

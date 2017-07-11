@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout>
+    <checkout_cart_index>
+        <reference name="checkout.cart.extra">
+            <block type="test_finaldate/checkout_finaldate" name="cart.finaldate"
+                   template="finaldate/finaldate.phtml"/>
+        </reference>
+    </checkout_cart_index>
+    <catalog_product_view>
+        <reference name="before_body_end">
+            <block type="page/html_head" name="product.finaldate.js" template="finaldate/js.phtml">
+                <action method="addJs">
+                    <script>finaldate/finaldate.js</script>
+                </action>
+            </block>
+        </reference>
+    </catalog_product_view>
+</layout>

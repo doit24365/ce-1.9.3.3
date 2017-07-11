@@ -2,18 +2,14 @@
 <config>
     <modules>
         <Test_FinalDate>
-            <version>0.1.0</version>
+            <version>0.1.1</version>
         </Test_FinalDate>
     </modules>
     <global>
         <models>
             <test_finaldate>
                 <class>Test_FinalDate_Model</class>
-                <resourceModel>test_finaldate_resource</resourceModel>
             </test_finaldate>
-            <test_finaldate_resource>
-                <class>Test_FinalDate_Model_Resource</class>
-            </test_finaldate_resource>
         </models>
         <helpers>
             <test_finaldate>
@@ -29,11 +25,65 @@
             </test_finaldate_setup>
         </resources>
         <blocks>
+            <test_finaldate>
+                <class>Test_FinalDate_Block</class>
+            </test_finaldate>
             <catalog>
                 <rewrite>
                     <product_view_type_configurable>Test_FinalDate_Block_Catalog_Product_View_Type_Configurable</product_view_type_configurable>
                 </rewrite>
             </catalog>
         </blocks>
+        <events>
+            <sales_quote_item_set_product>
+                <observers>
+                    <test_finaldate_sales_quote_item_set_product>
+                        <class>test_finaldate/observer</class>
+                        <method>salesQuoteItemSetCustomAttribute</method>
+                    </test_finaldate_sales_quote_item_set_product>
+                </observers>
+            </sales_quote_item_set_product>
+            <checkout_cart_save_before>
+                <observers>
+                    <test_finaldate_checkout_cart_product_add_after>
+                        <class>test_finaldate/observer</class>
+                        <method>salesQuoteSetCustomAttribute</method>
+                    </test_finaldate_checkout_cart_product_add_after>
+                </observers>
+            </checkout_cart_save_before>
+        </events>
+        <sales>
+            <quote>
+                <item>
+                    <product_attributes>
+                        <final_date/>
+                    </product_attributes>
+                </item>
+            </quote>
+        </sales>
+        <fieldsets>
+            <sales_convert_quote_item>
+                <final_date>
+                    <to_order_item>*</to_order_item>
+                </final_date>
+            </sales_convert_quote_item>
+            <sales_convert_order_item>
+                <final_date>
+                    <to_quote_item>*</to_quote_item>
+                </final_date>
+            </sales_convert_order_item>
+            <sales_convert_quote>
+                <final_date><to_order>*</to_order></final_date>
+            </sales_convert_quote>
+        </fieldsets>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <finaldate>
+                    <file>finaldate.xml</file>
+                </finaldate>
+            </updates>
+        </layout>
+    </frontend>
 </config>
