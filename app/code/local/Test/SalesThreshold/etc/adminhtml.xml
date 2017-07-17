@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <sales>
+            <children>
+                <test_postcodes translate="title" module="test_salesthreshold">
+                    <title>Postcodes</title>
+                    <action>test_postcode/postcode</action>
+                </test_postcodes>
+            </children>
+        </sales>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <test_postcodes>
+                                <title>Postcodes</title>
+                            </test_postcodes>
+                        </children>
+                    </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <test_sales>
+                                        <title>Test_Sales</title>
+                                        <sort_order>100</sort_order>
+                                        <children>
+                                            <sales translate="title">
+                                                <title>Threshold</title>
+                                                <sort_order>10</sort_order>
+                                            </sales>
+                                        </children>
+                                    </test_sales>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
